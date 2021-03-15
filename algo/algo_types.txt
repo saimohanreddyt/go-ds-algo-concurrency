@@ -1,0 +1,129 @@
+
+Various Algorithm design techniques are:
+1) Brute Force
+2) Greedy Algorithms
+3) Divide-and-Conquer, Decrease-and-Conquer
+4) Dynamic Programming
+5) Reduction / Transform-and-Conquer
+6) Backtracking and Branch-and-Bound
+
+Brute Force Algorithm
+	Brute Force is a straightforward approach of solving a problem based on the
+	problem statement. It is one of the easiest approaches to solve a particular
+	problem. It is useful for solving small size dataset problem.
+	Some examples of brute force algorithms are:
+	· Bubble-Sort
+	· Selection-Sort
+	· Sequential search in a list
+	· Computing pow(a, n) by multiplying a, n times.
+	· Convex hull problem
+	· String matching
+	· Exhaustive search: Traveling salesman, Knapsack, and Assignment problems
+
+Greedy Algorithm
+	In greedy algorithm, solution is constructed through a sequence of steps. At
+	each step, choice is made which is locally optimal. Greedy algorithms are
+	generally used to solve optimization problems. We always take the next data to
+	be processed depending upon the dataset which we have already processed
+	and then choose the next optimum data to be processed. Greedy algorithms
+	does not always give optimum solution.
+	Some examples of brute force algorithms are:
+	· Minimal spanning tree: Prim’s algorithm, Kruskal’s algorithm
+	· Dijkstra’s algorithm for single-source shortest path problem
+	· Greedy algorithm for the Knapsack problem
+	· The coin exchange problem
+	· Huffman trees for optimal encoding
+
+Divide-and-Conquer, Decrease-and-Conquer
+	Divide-and-Conquer algorithms involve basic three steps, first split the
+	problem into several smaller sub-problems, second solve each sub problem
+	and then finally combine the sub problems results to produce the result.
+	In divide-and-conquer the size of the problem is reduced by a factor (half, one-
+	third, etc.), While in decrease-and-conquer the size of the problem is reduced
+	by a constant.
+
+	Examples of divide-and-conquer algorithms:
+	· Merge-Sort algorithm (using recursion)
+	· Quicksort algorithm (using recursion)
+	· Computing the length of the longest path in a binary tree (using recursion)
+	· Computing Fibonacci numbers (using recursion)
+	· Quick-hull
+
+	Examples of decrease-and-conquer algorithms:
+	· Computing pow(a, n) by calculating pow(a, n/2) using recursion.
+	· Binary search in a sorted list (using recursion)
+	· Searching in BST
+	· Insertion-Sort
+	· Graph traversal algorithms (DFS and BFS)
+	· Topological sort
+	· Warshall’s algorithm (using recursion)
+	· Permutations (Minimal change approach, Johnson-Trotter algorithm)
+	· Computing a median, Topological sorting, Fake-coin problem (Ternary search)
+
+Dynamic Programming
+	While solving problems using Divide-and-Conquer method, there may be a
+	case when recursively sub-problems can result in the same computation being
+	performed multiple times. This problem arises when there are identical sub-
+	problems arise repeatedly in a recursion.
+	Dynamic programming is used to avoid the requirement of repeated calculation
+	of same sub-problem. In this method, we usually store the result of sub -
+	problems in a table and refer that table to find if we have already calculated
+	the solution of sub - problems before calculating it again.
+	Dynamic programming is a bottom up technique in which the smaller sub-
+	problems are solved first and the result of these are sued to find the solution of
+	the larger sub-problems.
+	Examples:
+	· Fibonacci numbers computed by iteration.
+	· Warshall’s algorithm for transitive closure implemented by iterations
+	· Floyd’s algorithms for all-pairs shortest paths
+
+
+Reduction / Transform-and-Conquer
+	These methods works as two-stage procedure. First, the problem is
+	transformed into a known problem for which we know optimal solution. In the
+	second stage, the problem is solved.
+	The most common types of transformation are sort of a list. For example,
+	Given a list of numbers finds the two closest number.
+	The brute force solution for this problem will take distance between each
+	element in the list and will try to keep the minimum distance pair; this
+	approach will have a Time Complexity of O(n 2 )
+	Transform and conquer solution, will be first sort the list in O(nlogn) time and
+	then find the closest number by scanning the list in another O(n). Which will
+	give the total Time Complexity of O(nlogn).
+	Examples:
+	· Gaussian elimination
+	· Heaps and Heapsort
+	
+
+Backtracking
+	In real life, let us suppose someone gave you a lock with a number (three digit
+	lock, number range from 1 to 9). Moreover, you do not have the exact
+	password key for the lock. You need to test every combination until you got the
+	right one. Obviously, you need to test starting from something like “111”, then
+	“112” and so on. You will get your key before you reach “999”. Therefore,
+	what you are doing is backtracking.
+	Suppose the lock produce some sound “click” correct digit is selected for any
+	level. If we can listen to this sound such intelligence/ heuristics will help you
+	to reach your goal much faster. These functions are called Pruning function or
+	bounding functions.
+	Backtracking is a method by which solution is found by exhaustively searching
+	through large but finite number of states, with some pruning or bounding
+	function that will narrow down our search.
+	For all the problems like (NP hard problems) for which there does not exist
+	any other method we use backtracking.
+	
+	Backtracking problems have the following components:
+	1. Initial state
+	2. Target / Goal state
+	3. Intermediate states
+	4. Path from the initial state to the target / goal state
+	5. Operators to get from one state to another
+	6. Pruning function (optional)
+
+
+Branch-and-bound
+	Branch and bound method is used when we can evaluate cost of visiting each
+	node by a utility functions. At each step, we choose the node with lowest cost
+	to proceed further. Branch-and bound algorithms are implemented using a
+	priority queue. In branch and bound, we traverse the nodes in breadth-first manner.
+

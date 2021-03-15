@@ -1,0 +1,7 @@
+packagemain
+
+func main() {
+	for {
+
+	}
+}

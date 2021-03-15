@@ -1,0 +1,12 @@
+import "fmt"
+
+func main() {
+
+	a := 0
+	for i := 0; i < 10; i++ {
+		a += 1
+
+		fmt.Println(a)
+	}
+
+}

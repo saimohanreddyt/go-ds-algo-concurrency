@@ -1,0 +1,126 @@
+
+Golang Concurrency:
+
+	Concurrency is an ability of a program to do multiple things at the same time. This means a program that
+have two or more tasks that run individually of each other, at about the same time, but remain part of the same 
+program. Concurrency is very important in modern software, due to the need to execute independent pieces of code
+as fast as possible without disturbing the overall flow of the program.
+
+Concurrency in Golang is the ability for functions to run independent of each other. A goroutine is a function 
+that is capable of running concurrently with other functions. When you create a function as a goroutine, it has 
+been treated as an independent unit of work that gets scheduled and then executed on an available logical 
+processor. The Golang runtime scheduler has feature to manages all the goroutines that are created and need 
+processor time. The scheduler binds operating system's threads to logical processors in order to execute the 
+goroutines. By sitting on top of the operating system, scheduler controls everything related to which goroutines 
+are running on which logical processors at any given time.
+
+Popular programming languages such as Java and Python implement concurrency by using threads. Golang has built-in 
+concurrency constructs: goroutines and channels. 
+
+Concurrency in Golang is cheap and easy. Goroutines are cheap, lightweight threads. Channels, are the conduits 
+that allow for communication between goroutines.
+
+Communicating Sequential Processes, or CSP for short, is used to describe how systems that feature multiple 
+concurrent models should interact with one another. It typically relies heavily on using channels as a medium for 
+passing messages between two or more concurrent processes, and is the underlying mantra of Golang.
+
+Goroutines — A goroutine is a function that runs independently of the function that started it.
+
+Channels — A channel is a pipeline for sending and receiving data. Channels provide a way for one goroutine to 
+	send structured data to another.
+
+	
+
+	Concurrency and parallelism comes into the picture when you are examining for multitasking and they are 
+	often used interchangeably, concurrent and parallel refer to related but different things.
+
+
+Concurrency - Concurrency is about to handle numerous tasks at once. This means that you are working to manage 
+	numerous tasks done at once in a given period of time. However, you will only be doing a single task at 
+	a time. This tends to happen in programs where one task is waiting and the program determines to drive 
+	another task in the idle time. It is an aspect of the problem domain — where your program needs to handle
+	numerous simultaneous events.
+
+
+Parallelism - Parallelism is about doing lots of tasks at once. This means that even if we have two tasks, they 
+	are continuously working without any breaks in between them. It is an aspect of the solution domain — 
+	where you want to make your program faster by processing different portions of the problem in parallel.
+
+A concurrent program has multiple logical threads of control. These threads may or may not run in parallel. A 
+parallel program potentially runs more quickly than a sequential program by executing different parts of the 
+computation simultaneously (in parallel). It may or may not have more than one logical thread of control.
+
+
+
+☛ concurrency vs parallelism 
+Go recommends to use goroutines on one core only but we can modify the Go program to run goroutines on different 
+	processor cores. For now, think goroutines as Go functions, because they are, but there is more to it.
+
+There are several differences between concurrency and parallelism. While concurrency is dealing with multiple 
+things at once, parallelism is doing multiple things at once. Parallelism is not always beneficial over 
+concurrency, we will learn this in upcoming lessons.
+
+
+
+☛ What is a computer process?
+When you write a computer program in languages like C, java or Go, it is just a text file. But as your computer 
+only understands binary instructions which are composed of 0s and 1s, you need to compile that code to machine 
+language. This is where compiler comes in. In scripting languages like python and javascript, the interpreter 
+does the same thing.
+
+When a compiled program is sent to OS to handle, OS allocates different things like memory address space (where 
+process’s heap and stacks will be located), a program counter, a PID (process id) and other very crucial things. 
+A process has at least one thread known as primary thread, while primary thread can create multiple other threads.
+When the primary thread is done with its execution, process exits.
+
+
+
+☛ What is a thread?
+A thread is a light-weight process inside a process. A thread is the actual executor of a piece of code. A thread 
+has access to memory provided by the process, OS resources, and other things
+
+☛ Thread scheduling
+When multiple threads are running in series or in parallel, as multiple threads might share some data, threads 
+need to work in coordination so that only one thread can access a particular data at one time. Execution of 
+multiple threads in some order is called scheduling. Os threads are scheduled by the kernel and some threads 
+are managed by runtime environment of the programming language, like JRE. When multiple threads trying to access 
+the same data at the same time which cause data to be changed or results into unexpected outcome, then race 
+condition occurs.
+
+☛ Concurrency in Go
+Finally, we reached to a point where we will talk about how Go implements concurrency. Traditional languages like 
+java has a thread class which can be used to create multiple threads in the current process. Since Go does not 
+have traditional OOP syntaxes, it provides go keyword to create goroutines. When go keyword is placed before a 
+function call, it becomes goroutines.
+
+
+When we run a Go program, Go runtime will create few threads on a core on which all the goroutines are 
+multiplexed (spawned). At any point in time, one thread will be executing one goroutine and if that goroutine is 
+blocked, then it will be swapped out for another goroutine that will execute on that thread instead. This is like 
+thread scheduling but handled by Go runtime and this is much faster.
+
+Also, rapid switching between goroutines is possible and more efficient compared to threads as we saw earlier. 
+Since one goroutine is running on one thread at a time and goroutines are cooperatively scheduled, another 
+goroutine is not scheduled until current goroutine is blocked. If any Goroutine in that thread blocks say waiting 
+for user input, then another goroutine is scheduled in its place. goroutine can block on one of the following 
+conditions
+
+	network input
+	
+	sleeping
+	
+	channel operation
+	
+	blocking on primitives in the sync package
+
+
+If the goroutine does not block on one of these conditions, it can starve the thread on which it was multiplexed, 
+killing other goroutines in the process. While there are some remedies, but if it does, then it is considered as 
+bad programming.
+
+Channels will play a great role while working with goroutines as a medium to share data in between them.
+This will prevent race conditions and inappropriate access to shared data between them as opposed to accessing 
+the shared memory in case of threads.
+
+
+
